@@ -1,4 +1,18 @@
-pip install adversarial-robustness-toolbox # ART - adversarial-robustness-toolbox (ART) is a Python library for Machine Learning Security.
-pip install tensorflow # TensorFlow is an open source software library for numerical computation using data flow graphs.
-pip install numpy pandas scikit-learn matplotlib jupyter # Data Science
-pip install keras # Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano.
+pip install adversarial-robustness-toolbox
+pip install tensorflow
+pip install numpy pandas scikit-learn matplotlib keras torch torchvision torchaudio pytorch keras
+pip install opencv-python
+apt install wireshark
+apt install tcpdump
+pip install adversarial_toolkit
+pip install foolbox
+apt install metasploit-framework
+pip install deepdream
+pip install netron
+apt install nmap
+apt install imagemagick
+apt install ida-pro
+apt install radare2
+apt install autopsy
+pip install pandas
+pip install numpy
