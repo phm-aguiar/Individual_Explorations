@@ -6,12 +6,12 @@
 #    By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 11:28:55 by phenriq2          #+#    #+#              #
-#    Updated: 2023/12/18 11:33:30 by phenriq2         ###   ########.fr        #
+#    Updated: 2023/12/18 13:04:00 by phenriq2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-frutas = ['maçã', 'banana', 'morango']
+frutas = ['maçã', 'banana', 'morango', 'uva', 'abacaxi', 'laranja', 'melancia' 'manga']
 
 for indice, fruta in enumerate(frutas):
 	print(f"Índice: {indice}, Fruta: {fruta}")
