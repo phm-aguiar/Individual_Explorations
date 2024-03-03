@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   marvim.c                                           :+:      :+:    :+:   */
+/*   twosum.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 10:57:42 by phenriq2          #+#    #+#             */
-/*   Updated: 2023/06/23 13:16:02 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/02/17 08:55:25 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/02/17 09:05:17 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// fazer isso .... "\?$*'MaRViN'*$?\"
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void	print_char(char c)
+int	*twosum(int *nums, int numsSize, int target, int *returnSize)
 {
-	write(1, &c, 1);
-}
-
-void	print_message(char *message)
-{
+	int	*sum;
 	int	i;
+	int	j;
 
 	i = 0;
-	while (message[i] != '\0')
+	j = 0;
+	sum = (int *)malloc(2 * sizeof(int));
+	while (i < numsSize)
 	{
-		if (message[i] == '$' || message[i] == '*')
+		j = i + 1;
+		while (j < numsSize)
 		{
-			print_char('%');
-			print_char(message[i]);
-		}
-		else
-		{
-			print_char(message[i]);
+			if (nums[i] + nums[j] == target)
+			{
+				sum[0] = nums[i];
+				sum[1] = nums[j];
+				*returnSize = 2;
+				return (sum);
+			}
+			j++;
 		}
 		i++;
 	}
-}
-
-int	main(void)
-{
-	print_message("\"?$*'MaRViN'*$?\"");
-	return (0);
+	*returnSize = 0;
+	return (sum);
 }
