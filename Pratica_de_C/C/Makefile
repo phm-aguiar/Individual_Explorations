@@ -6,14 +6,8 @@
 DEFAULT_GOAL: all
 .DELETE_ON_ERROR: $(NAME)
 .PHONY: all bonus clean fclean re
-
-# Hide calls
-export VERBOSE	=	TRUE
-ifeq ($(VERBOSE),TRUE)
-	HIDE =
-else
-	HIDE = @
-endif
+# 'HIDE = @' will hide all terminal output from Make
+HIDE = @
 
 
 #------------------------------------------------------------------------------#
@@ -21,15 +15,24 @@ endif
 #------------------------------------------------------------------------------#
 
 # Compiler and flags
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I.
-RM		=	rm -rf
+CC		=	gcc
+CFLAGS	=	-Wall -Werror -Wextra -I. -I./$(INCDIR)
+RM		=	rm -f
 
-# Dir and file names
-NAME	=	replace
-SRCS	=	main.cpp
-OBJS	=	$(SRCS:.cpp=.o)
-INC		=	$(wildcard *.hpp)
+# Output file name
+NAME	=	garbage_collector
+
+# Sources are all .c files
+SRCDIR	=	src/
+SRCS	=	$(wildcard $(SRCDIR)*.c) # Wildcard for sources is forbidden by norminette
+
+# Objects are all .o files
+OBJDIR	=	bin/
+OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
+
+# Includes are all .h files
+INCDIR	=	include/
+INC		=	$(wildcard $(INCDIR)*.h)
 
 
 #------------------------------------------------------------------------------#
@@ -40,11 +43,15 @@ all: $(NAME)
 
 # Generates output file
 $(NAME): $(OBJS)
-	$(HIDE)$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(HIDE)$(CC) $(CFLAGS) -o $@ $^
 
 # Compiles sources into objects
-.cpp.o: $(SRCS) $(INC)
+$(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c $(INC) | $(OBJDIR)
 	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
+
+# Creates directory for binaries
+$(OBJDIR):
+	$(HIDE)mkdir -p $@
 
 # Removes objects
 clean:
