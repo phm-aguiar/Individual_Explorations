@@ -9,3 +9,4 @@ if hasattr(string, 'split'):
 	print(string.split());
 # o getattr pega o atributo do objeto
 	print(getattr(string, 'split')());
+

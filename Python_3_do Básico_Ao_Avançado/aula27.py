@@ -16,3 +16,4 @@ print(variavel[::-1])
 while counter < len(variavel):
     print(variavel[counter], end='')
     counter += 1
+

@@ -46,3 +46,4 @@ def mostro_argumentos_nomeados(**kwargs):
 
 mostro_argumentos_nomeados(nome='Alberto', idade=42);
 mostro_argumentos_nomeados(**resto_da_pessoa);
+

@@ -6,7 +6,7 @@
 #    By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 14:43:57 by phenriq2          #+#    #+#              #
-#    Updated: 2024/01/12 14:53:14 by phenriq2         ###   ########.fr        #
+#    Updated: 2024/04/15 11:08:42 by phenriq2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,3 +50,4 @@ def calcular(operacao: str, *args: list) -> int:
 		return 'Operação inválida'
 	
 print(calcular('-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
