@@ -1,0 +1,43 @@
+exemplo de prompt para gpt-3
+
+me [função] um [tipo de texto] sobre [assunto] nesse [estilo]
+
+
+
+
+função : (escreva, resuma, explique, descreva, conte, faça, crie, desenvolva, produza, elabore, componha, redija, escreva, diga, narre)
+
+tipo de texto : (roteiro, post para blog, artigo, texto, poema, conto, história, parágrafo, texto, redação, carta, mensagem, e-mail, diálogo)
+
+assunto : ( I.A, futebol, música, filme ...)
+
+estilo : (formal, informal, técnico, acadêmico, poético, narrativo, 
+descritivo, argumentativo, persuasivo, instrutivo, literário, jornalístico, científico, 
+dramático, humorístico, romântico, trágico, épico, lírico, satírico, irônico, cômico, fantástico, 
+realista, surrealista, absurdo, minimalista, modernista, pós-moderno, clássico, contemporâneo, 
+popular, erudito, regionalista, urbano, rural, etc.)
+
+
+3R = Resumos, roteiros e regras
+
+
+
+========================================== exemplo ===============================
+
+me escreva um artigo sobre primeiros passos no docker, em tom de conversa com uma crianca de 10 anos. Agora, use os itens em {resumo} para o 
+roteiro {ROTEIRO} e seguindo as regras {REGRAS} para o texto.
+
+{RESUMO}
+[Autoridade]: Pedro, um desenvolvedor de software
+[Avatar]: Desenvolvedores Júniors
+[Problema]: Como instalar o docker
+
+{ROTEIRO}
+
+óla eu sou [Autoridade] e vou ajudar o [Avatar] a instalar o docker. 
+Hoje vamos resolver o [Problema]
+
+{REGRAS}
+> Siga o {ROTEIRO} acima e substitua os elementos entre colchetes pela aqueles listados em {RESUMO}
+> mantenha o tom e ritmo, mas reescreva as palavras em {ROTEIRO} para que seja diferente do original,
+expandindo ou mudando conforme necessário
