@@ -11,3 +11,4 @@ diferente = 'a' != 'b'
 l = [maior, maior_ou_igual, menor, menor_ou_igual, igual, diferente]
 for a in l:
     print(diferente)
+

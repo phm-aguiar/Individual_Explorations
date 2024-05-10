@@ -6,7 +6,7 @@
 #    By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 15:47:36 by phenriq2          #+#    #+#              #
-#    Updated: 2024/03/13 16:10:21 by phenriq2         ###   ########.fr        #
+#    Updated: 2024/04/15 11:01:17 by phenriq2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,3 +42,4 @@ print(s4, s5, s6, s7)
 # o & é a interseção de dois sets (s2 e s3) no expemplo acima ficaria {3}
 # o - é a diferença de dois sets (s2 e s3) no expemplo acima ficaria {1,2}
 # o ^ é a diferença simétrica de dois sets (s2 e s3) no expemplo acima ficaria {1,2,4,5}
+

@@ -16,3 +16,4 @@ a,*_ = lista
 
 _, b, *_ = lista
 print(b, _)
+

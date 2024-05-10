@@ -15,3 +15,4 @@ if multa_vel and multa_espaco:
     print("voce foi  multado")
 else:
     print("voce nao foi multado")
+

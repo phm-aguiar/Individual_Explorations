@@ -12,3 +12,4 @@ if verificação(*l):
     print('Entrar')
 else:
     print('Sair')
+

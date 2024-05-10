@@ -16,3 +16,4 @@ print("Maior de idade?", maior_de_idade)
 print("Altura:", altura_em_metros)
 print(f"Imc: {peso/(altura_em_metros**2):.2f}")
 print(f"Imc acima do peso? {imc_acima_do_peso}")
+
