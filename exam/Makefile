@@ -20,7 +20,7 @@ CFLAGS	=	-Wall -Wextra -I. -I./$(INCDIR)
 RM		=	rm -f
 
 # Output file name
-NAME	=	exame03
+NAME	=	exame04
 
 # Sources are all .c files
 SRCDIR	=	src/
