@@ -1,0 +1,11 @@
+CEP: 08160-000
+Logradouro: Rua Aricanga
+Complemento: 
+Unidade: 
+Bairro: Jardim Silva Teles
+Localidade: São Paulo
+UF: SP
+IBGE: 3550308
+GIA: 1004
+DDD: 11
+SIAFI: 7107
