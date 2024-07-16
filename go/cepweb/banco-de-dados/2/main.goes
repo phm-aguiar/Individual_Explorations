@@ -1,0 +1,55 @@
+package main
+
+import (
+	"fmt"
+
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+)
+
+type Category struct {
+	ID   int    `gorm:"primary_key" json:"id"`
+	Name string `gorm:"type:varchar(100)" json:"name"`
+	Products []Product
+}
+
+type Product struct {
+	ID           int     `gorm:"primary_key" json:"id"`
+	Name         string  `gorm:"type:varchar(100)" json:"name"`
+	Price        float64 `gorm:"type:decimal" json:"price"`
+	CategoryID   int     `json:"category_id"`
+	Category     Category
+	SerialNumber SerialNumber
+	gorm.Model
+}
+
+type SerialNumber struct {
+	ID        int    `gorm:"primary_key" json:"id"`
+	Number    string `gorm:"type:varchar(100)" json:"number"`
+	ProductID int    `json:"product_id"` // Corrigido o nome do campo
+}
+
+func main() {
+	dsn := "root:root@tcp(localhost:3307)/goexpert?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	}
+	db.AutoMigrate(&Product{}, &Category{}, &SerialNumber{})
+
+	// create category
+	category := Category{Name: "eletronicos"}
+	db.Create(&category)
+
+	// create product
+	db.Create(&Product{Name: "fone de ouvido", Price: 100.0, CategoryID: 1})
+
+	// db.Create(&SerialNumber{Number: "123456", ProductID: 1})
+	// fetch products
+	var products []Product
+	// aqui estamos fazendo um join com a tabela category e serial number
+	db.Preload("Category").Preload("SerialNumber").Find(&products)
+	for _, v := range products {
+		fmt.Println(v.Name, v.Category.Name, v.SerialNumber.Number)
+	}
+}

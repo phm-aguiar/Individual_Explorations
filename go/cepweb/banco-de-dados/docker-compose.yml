@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: goexpert
+      MYSQL_PASSWORD: root
+    ports:
+      - "3307:3306"
+
+
+# entrando no mysql com linha de commando
+
+# docker exec -it mysql bash
+# colocando o usuario o banco de dados e a senha
+# mysql -u root -p goexpert
+# root
