@@ -1,9 +1,10 @@
 package main
 
 import (
+	"fmt"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"gorm.io/gorm/clause"
 )
 
 type Category struct {
@@ -28,15 +29,32 @@ func main() {
 	}
 	db.AutoMigrate(&Product{}, &Category{})
 
-	tx := db.Begin()
-	var c Category
-	err = tx.Debug().Clauses(clause.Locking{Strength: "UPDATE"}).First(&c, 1).Error
+	// create category
+	// category := Category{Name: "Cozinha"}
+	// db.Create(&category)
+
+	// category2 := Category{Name: "Eletrônicos"}
+	// db.Create(&category2)
+
+	// // create product
+	// db.Create(&Product{Name: "panela eletrica", Price: 99.0, Categories: []Category{category, category2}})
+
+	// // create serial number
+	// db.Create(&SerialNumber{Number: "123456", ProductID: 1})
+
+	// // db.Create(&SerialNumber{Number: "123456", ProductID: 1})
+	// fetch products
+
+	var categories []Category
+	err = db.Model(&Category{}).Preload("Products").Find(&categories).Error
 	if err != nil {
 		panic(err)
 	}
-	// lock pessimista: funciona igual ao mutex, só que no banco de dados
-	c.Name = "casa e jardim"
-	tx.Debug().Save(&c)
-	tx.Commit()
+	for _, category := range categories {
+		fmt.Println(category.Name,":")
+		for _, product := range category.Products {
+			fmt.Println("-",product.Name)
+		}
+	}
 
 }
